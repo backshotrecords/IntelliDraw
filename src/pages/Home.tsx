@@ -181,7 +181,13 @@ export default function Home() {
             </button>
             {/* Mobile CTA (Slider) */}
             <div className="md:hidden">
-              <SlideToStart onUnlock={() => setHeroTextMode('typed')} />
+              <SlideToStart 
+                onUnlock={() => setHeroTextMode('typed')} 
+                onReset={() => {
+                  setHeroTextMode('default');
+                  setTypedText('');
+                }}
+              />
             </div>
           </div>
 

@@ -4,9 +4,10 @@ import { ArrowRight } from 'lucide-react';
 
 interface SlideToStartProps {
   onUnlock?: () => void;
+  onReset?: () => void;
 }
 
-export default function SlideToStart({ onUnlock }: SlideToStartProps) {
+export default function SlideToStart({ onUnlock, onReset }: SlideToStartProps) {
   const [isUnlocked, setIsUnlocked] = useState(false);
 
   useEffect(() => {
@@ -34,6 +35,9 @@ export default function SlideToStart({ onUnlock }: SlideToStartProps) {
         // Reset state so it's reset if the user hits back button on mobile
         setTimeout(() => {
           setIsUnlocked(false);
+          if (onReset) {
+            onReset();
+          }
         }, 600);
       }, 2000);
     }
