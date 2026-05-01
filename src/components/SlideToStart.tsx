@@ -11,8 +11,8 @@ export default function SlideToStart() {
       setIsUnlocked(true);
       // Simulate action
       setTimeout(() => {
-        setIsUnlocked(false);
-      }, 2000);
+        window.location.href = "https://repo-intellidraw.vercel.app/";
+      }, 400);
     }
   };
 

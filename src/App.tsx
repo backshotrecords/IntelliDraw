@@ -143,7 +143,9 @@ export default function App() {
           {/* CTA Area */}
           <div className="flex items-center">
             {/* Desktop CTA */}
-            <button className="hidden md:block bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium px-6 py-2.5 rounded-full transition-all duration-300 hover:shadow-md hover:scale-105 active:scale-95">
+            <button 
+              onClick={() => window.location.href = 'https://repo-intellidraw.vercel.app/'}
+              className="hidden md:block bg-slate-900 hover:bg-slate-800 text-white text-sm font-medium px-6 py-2.5 rounded-full transition-all duration-300 hover:shadow-md hover:scale-105 active:scale-95">
               Get Started Free
             </button>
             {/* Mobile CTA (Slider) */}
@@ -221,11 +223,15 @@ export default function App() {
 
         {/* Hero CTA */}
         <div className="animate-fade-in-up delay-300 flex flex-col sm:flex-row items-center gap-4">
-          <button className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-medium px-8 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2">
+          <button 
+            onClick={() => window.location.href = 'https://repo-intellidraw.vercel.app/'}
+            className="w-full sm:w-auto bg-slate-900 hover:bg-slate-800 text-white font-medium px-8 py-4 rounded-full transition-all duration-300 hover:shadow-lg hover:-translate-y-0.5 flex items-center justify-center gap-2">
             Get Started Free
             <ArrowRight className="w-4 h-4" />
           </button>
-          <button className="w-full sm:w-auto bg-white border border-slate-200 hover:border-slate-300 text-slate-900 font-medium px-8 py-4 rounded-full transition-all duration-300 hover:shadow-sm">
+          <button 
+            onClick={() => window.location.href = 'https://repo-intellidraw.vercel.app/'}
+            className="w-full sm:w-auto bg-white border border-slate-200 hover:border-slate-300 text-slate-900 font-medium px-8 py-4 rounded-full transition-all duration-300 hover:shadow-sm">
             See a Live Demo →
           </button>
         </div>
@@ -305,7 +311,9 @@ export default function App() {
               Export to PNG, SVG, or React Code
             </li>
           </ul>
-          <button className="bg-slate-900 hover:bg-slate-800 text-white font-medium px-8 py-3.5 rounded-full transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 flex items-center gap-2">
+          <button 
+            onClick={() => window.location.href = 'https://repo-intellidraw.vercel.app/'}
+            className="bg-slate-900 hover:bg-slate-800 text-white font-medium px-8 py-3.5 rounded-full transition-all duration-300 hover:shadow-md hover:-translate-y-0.5 flex items-center gap-2">
             Explore all features
           </button>
         </div>
@@ -465,7 +473,9 @@ export default function App() {
                 </div>
 
                 {/* Action Button */}
-                <button className="w-full bg-white border-2 border-slate-200 hover:border-slate-300 text-slate-900 font-bold py-4 rounded-xl transition-all hover:shadow-sm">
+                <button 
+                  onClick={() => window.location.href = 'https://repo-intellidraw.vercel.app/'}
+                  className="w-full bg-white border-2 border-slate-200 hover:border-slate-300 text-slate-900 font-bold py-4 rounded-xl transition-all hover:shadow-sm">
                   View in Workspace
                 </button>
               </div>
@@ -500,7 +510,9 @@ export default function App() {
                 <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-700" /> 50 AI generations per month</li>
                 <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-300" /> <span className="text-slate-400 decoration-slate-300">Team collaboration</span></li>
               </ul>
-              <button className="w-full bg-white border-2 border-slate-200 hover:border-slate-300 text-slate-900 font-bold py-3.5 rounded-full transition-all">
+              <button 
+                onClick={() => window.location.href = 'https://repo-intellidraw.vercel.app/'}
+                className="w-full bg-white border-2 border-slate-200 hover:border-slate-300 text-slate-900 font-bold py-3.5 rounded-full transition-all">
                 Get Started Free
               </button>
             </div>
@@ -521,7 +533,9 @@ export default function App() {
                 <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-300" /> Real-time multiplayer</li>
                 <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-300" /> Custom private Skills</li>
               </ul>
-              <button className="w-full bg-slate-100 hover:bg-white text-slate-900 font-bold py-3.5 rounded-full transition-all">
+              <button 
+                onClick={() => window.location.href = 'https://repo-intellidraw.vercel.app/'}
+                className="w-full bg-slate-100 hover:bg-white text-slate-900 font-bold py-3.5 rounded-full transition-all">
                 Start 14-Day Free Trial
               </button>
             </div>
