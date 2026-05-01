@@ -2,7 +2,11 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 
-export default function SlideToStart() {
+interface SlideToStartProps {
+  onUnlock?: () => void;
+}
+
+export default function SlideToStart({ onUnlock }: SlideToStartProps) {
   const [isUnlocked, setIsUnlocked] = useState(false);
 
   useEffect(() => {
@@ -19,14 +23,19 @@ export default function SlideToStart() {
     // If dragged far enough to the right
     if (info.offset.x > 100) {
       setIsUnlocked(true);
-      // Simulate action
+      
+      if (onUnlock) {
+        onUnlock();
+      }
+      
+      // Simulate action and wait slightly longer so animation can finish playing
       setTimeout(() => {
         window.location.href = "https://repo-intellidraw.vercel.app/";
         // Reset state so it's reset if the user hits back button on mobile
         setTimeout(() => {
           setIsUnlocked(false);
         }, 600);
-      }, 400);
+      }, 2000);
     }
   };
 

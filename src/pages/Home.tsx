@@ -7,6 +7,36 @@ import MobileMenu from '../components/MobileMenu';
 
 export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const [heroTextMode, setHeroTextMode] = useState<'default' | 'typed'>('default');
+  const [typedText, setTypedText] = useState('');
+
+  // Handle restoring state if returned via back button
+  useEffect(() => {
+    const handlePageShow = (e: PageTransitionEvent) => {
+      if (e.persisted) {
+        setHeroTextMode('default');
+        setTypedText('');
+      }
+    };
+    window.addEventListener('pageshow', handlePageShow);
+    return () => window.removeEventListener('pageshow', handlePageShow);
+  }, []);
+
+  // Custom typing effect for the transition
+  useEffect(() => {
+    if (heroTextMode === 'typed') {
+      const targetText = "Let's Gooooooooooooooooooooo!";
+      let i = 0;
+      setTypedText("");
+      const interval = setInterval(() => {
+        setTypedText(targetText.substring(0, i + 1));
+        i++;
+        if (i >= targetText.length) clearInterval(interval);
+      }, 90);
+      
+      return () => clearInterval(interval);
+    }
+  }, [heroTextMode]);
 
   // Injecting custom styles for the specific fade-in animations
   useEffect(() => {
@@ -151,7 +181,7 @@ export default function Home() {
             </button>
             {/* Mobile CTA (Slider) */}
             <div className="md:hidden">
-              <SlideToStart />
+              <SlideToStart onUnlock={() => setHeroTextMode('typed')} />
             </div>
           </div>
 
@@ -201,20 +231,28 @@ export default function Home() {
         <main className="relative z-10 pt-12 pb-10 px-6 max-w-7xl mx-auto flex flex-col items-center text-center">
 
         {/* Hero Headlines */}
-        <div className="animate-fade-in-up delay-100 flex flex-col justify-center items-center mb-6 w-full text-center">
-          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[1.1] max-w-4xl mx-auto text-slate-900">
-            <span className="text-slate-900">Natural Language </span>
-            <br className="hidden md:block" />
-            <span className="text-slate-500">to Production-Ready </span>
-            <br className="md:hidden" />
-            <span className="text-slate-900">Diagrams</span>
-            <span 
-              className="inline-block w-[4px] md:w-[6px] bg-slate-400 ml-2 animate-cursor-blink align-middle"
-              style={{ 
-                height: '0.85em', 
-                marginBottom: '0.05em'
-              }} 
-            />
+        <div className="animate-fade-in-up delay-100 flex flex-col justify-center items-center mb-6 w-full text-center min-h-[180px] md:min-h-[250px]">
+          <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold tracking-tighter leading-[1.1] max-w-4xl mx-auto text-slate-900 flex-1 flex items-center justify-center">
+            <div className={`max-w-full w-full ${heroTextMode === 'typed' ? 'break-all md:break-words' : ''}`}>
+              {heroTextMode === 'default' ? (
+                <>
+                  <span className="text-slate-900">Natural Language </span>
+                  <br className="hidden md:block" />
+                  <span className="text-slate-500">to Production-Ready </span>
+                  <br className="md:hidden" />
+                  <span className="text-slate-900">Diagrams</span>
+                </>
+              ) : (
+                <span className="text-slate-900">{typedText}</span>
+              )}
+              <span 
+                className="inline-block w-[4px] md:w-[6px] bg-slate-400 ml-2 animate-cursor-blink align-middle"
+                style={{ 
+                  height: '0.85em', 
+                  marginBottom: '0.05em'
+                }} 
+              />
+            </div>
           </h1>
         </div>
 
