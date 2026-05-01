@@ -1,9 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
 
 export default function SlideToStart() {
   const [isUnlocked, setIsUnlocked] = useState(false);
+
+  useEffect(() => {
+    const handlePageShow = (e: PageTransitionEvent) => {
+      if (e.persisted) {
+        setIsUnlocked(false);
+      }
+    };
+    window.addEventListener('pageshow', handlePageShow);
+    return () => window.removeEventListener('pageshow', handlePageShow);
+  }, []);
 
   const handleDragEnd = (event: any, info: any) => {
     // If dragged far enough to the right
@@ -12,6 +22,10 @@ export default function SlideToStart() {
       // Simulate action
       setTimeout(() => {
         window.location.href = "https://repo-intellidraw.vercel.app/";
+        // Reset state so it's reset if the user hits back button on mobile
+        setTimeout(() => {
+          setIsUnlocked(false);
+        }, 600);
       }, 400);
     }
   };
