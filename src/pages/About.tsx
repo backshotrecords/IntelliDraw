@@ -47,7 +47,7 @@ export default function About() {
             {/* Hero Image */}
             <div className="-mx-2 sm:-mx-8 md:-mx-16 mb-12">
               <img 
-                src="hero.png" 
+                src="/hero.png" 
                 alt="AI and Human Intent" 
                 className="w-full h-auto rounded-3xl shadow-sm border border-slate-100 object-cover"
               />
