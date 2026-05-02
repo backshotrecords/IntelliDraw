@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { PenTool, ArrowLeft } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import heroImage from '../assets/hero.png';
 
 export default function About() {
   const location = useLocation();
@@ -47,7 +48,7 @@ export default function About() {
             {/* Hero Image */}
             <div className="-mx-2 sm:-mx-8 md:-mx-16 mb-12">
               <img 
-                src="/hero.png" 
+                src={heroImage} 
                 alt="AI and Human Intent" 
                 className="w-full h-auto rounded-3xl shadow-sm border border-slate-100 object-cover"
               />
