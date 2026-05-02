@@ -5,7 +5,7 @@ import heroImage from '../assets/hero.png';
 
 export default function About() {
   const location = useLocation();
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [location.pathname]);
@@ -26,14 +26,14 @@ export default function About() {
       </div>
 
       <main className="flex-1 max-w-3xl w-full mx-auto px-6 pt-40 pb-24">
-        
 
-          <h1 className="article-title text-4xl md:text-5xl font-bold text-[#111827] mb-10 leading-tight">
-            IntelliDraw: Restoring Balance Between Human Intent and AI Ability
-          </h1>
-          
-          <div className="animate-fade-in-up">
-          
+
+        <h1 className="article-title text-4xl md:text-5xl font-bold text-[#111827] mb-10 leading-tight">
+          IntelliDraw: Restoring Balance Between Human Intent and AI Ability
+        </h1>
+
+        <div className="animate-fade-in-up">
+
 
           <div className="article-body text-slate-700">
             <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">The Problem: AI Is Outpacing Our Ability to Explain</h2>
@@ -44,16 +44,16 @@ export default function About() {
             <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">A Different Belief: Keep Humans in the Loop</h2>
             <p className="mb-6">At Horizon Labs, there’s a simple belief: fully autonomous systems aren’t the answer. Not because AI isn’t capable, but because alignment matters more than capability. The goal isn’t to remove humans from the loop. It’s to strengthen their position inside it.</p>
             <p className="mb-6">Because balance is what keeps systems stable. And if AI ability is increasing, then human ability has to increase too.</p>
-            
+
             {/* Hero Image */}
             <div className="-mx-2 sm:-mx-8 md:-mx-16 mb-12">
-              <img 
-                src={heroImage} 
-                alt="AI and Human Intent" 
+              <img
+                src={heroImage}
+                alt="AI and Human Intent"
                 className="w-full h-auto rounded-3xl shadow-sm border border-slate-100 object-cover"
               />
             </div>
-            
+
             <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">Introducing IntelliDraw</h2>
             <p className="mb-6">That’s where IntelliDraw comes in.</p>
             <p className="mb-6">IntelliDraw is built on a simple idea: before we ask AI to act, we should get better at expressing what we actually mean. Not just in words, but in structure.</p>
@@ -110,7 +110,7 @@ export default function About() {
             <p className="mb-6">A world where the gap between intention and outcome gets smaller.</p>
             <p className="mb-6">A world where balance is restored, not by slowing AI down, but by bringing humans up to meet it.</p>
           </div>
-          
+
           <div className="mt-12 text-left">
             <Link to="/" className="inline-flex items-center justify-center bg-slate-900 hover:bg-slate-800 text-white font-medium px-8 py-4 rounded-full transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
               Go to the App
