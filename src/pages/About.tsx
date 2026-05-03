@@ -64,12 +64,13 @@ export default function About() {
 
             <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">Why Visual Thinking Works Better</h2>
             <p className="mb-6">Think about it. Your brain doesn’t really think in paragraphs. It thinks in chunks, relationships, cause and effect. Visual patterns. That’s why diagrams often make things “click” faster than explanations.</p>
-            <p className="mb-6">There’s a reason for that. Human working memory is limited. We can only hold a few moving parts in our head at once. But visual processing? That’s different. It’s denser. You can look at a diagram and understand relationships instantly that would take pages to explain.</p>
-            <p className="mb-6">Flowcharts tap into that strength.</p>
-
-            <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">What Changes When Flowcharts Meet AI</h2>
-            <p className="mb-6">Now, flowcharts aren’t new. People have been using them for decades. The difference is what happens when you pair them with AI.</p>
-            <p className="mb-6">Instead of being static diagrams, they become living instructions.</p>
+            <p className="mb-6">There’s a reason for that. Human working memory is limited.
+              We can only hold a few moving parts in our head at once. But visual processing?
+              That’s different. It’s denser. You can look at a diagram and understand relationships
+              instantly that would take pages to explain.</p>
+            <p className="mb-6">Flowcharts tap into that strength. Now, flowcharts aren’t new.
+              People have been using them for decades. The difference is what happens when you pair them with AI.
+              Instead of being static diagrams, they become living logic.</p>
 
             <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">Multimodal Input: Think How You Naturally Think</h2>
             <p className="mb-6">With IntelliDraw, you can start with whatever form your thoughts naturally take, text, voice, even images, and shape them into a flowchart. That means more of your actual thinking makes it into the design. Less gets lost in translation.</p>
@@ -86,29 +87,28 @@ export default function About() {
             <p className="mb-6">This part matters more than it sounds.</p>
             <p className="mb-6">AI systems don’t actually think in the loose, conversational way we do. They perform better when instructions are structured, compressed, and unambiguous. Dense pseudocode hits that sweet spot. It says more, with less. It reduces ambiguity. It uses fewer tokens. It gives the system a clearer map of what to do.</p>
 
-            <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">Cleaner Handoff to Agents</h2>
-            <p className="mb-6">So by the time the agent receives the instruction, it’s not guessing anymore.</p>
-            <p className="mb-6">There’s less drift. Fewer hallucinations. More reliable execution.</p>
-
-            <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">The Real Shift: Improve Thinking, Not Just Prompts</h2>
-            <p className="mb-6">And that’s the real shift.</p>
-            <p className="mb-6">Instead of trying to get better outputs by tweaking prompts over and over, you improve the input at its source... Instead of debugging code, you're debugging your thinking.</p>
+            <p className="mb-6">So by the time the agent receives the instruction, it’s not guessing anymore.
+              There’s less drift. Fewer hallucinations. More reliable execution. That’s the real shift.
+              Instead of trying to get better outputs by tweaking prompts
+              over and over, you improve the input at its source... Instead of debugging code,
+              you're debugging your thinking.</p>
 
             <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">Extending Human Intelligence</h2>
-            <p className="mb-6">IntelliDraw doesn’t replace human intelligence. It extends it. It gives you a way to externalize your thoughts, organize them, and hand them off with precision.</p>
-            <p className="mb-6">In a way, it’s less about controlling AI, and more about becoming clearer yourself.</p>
+            <p className="mb-6">IntelliDraw doesn’t replace human intelligence. It extends it.
+              It gives you a way to externalize your thoughts, organize them, and hand them off with precision.
+              In a way, it’s less about controlling AI, and more about becoming clearer yourself.</p>
 
-            <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">The Bigger Picture</h2>
-            <p className="mb-6">Because the future isn’t human versus AI.</p>
-            <p className="mb-6">It’s human with AI.</p>
-            <p className="mb-6">And the systems that win won’t be the ones that remove people from the loop. They’ll be the ones that make people sharper, more expressive, and more aligned with the tools they’re using. That's the world we imagine.</p>
+            <p className="mb-6">Because the future isn’t human versus AI.
+              It’s human with AI. And the systems that win won’t be the ones that remove people from the loop.
+              They’ll be the ones that make people sharper, more expressive, and more aligned with the
+              tools they’re using. That's the world we imagine.</p>
 
             <h2 className="text-2xl font-bold text-slate-900 mt-12 mb-4">Final Thought</h2>
-            <p className="mb-6">IntelliDraw is just one step in that direction.</p>
-            <p className="mb-6">But it points to something bigger.</p>
-            <p className="mb-6">A world where your ability to think clearly directly translates into your ability to build, create, and execute.</p>
-            <p className="mb-6">A world where the gap between intention and outcome gets smaller.</p>
-            <p className="mb-6">A world where balance is restored, not by slowing AI down, but by bringing humans up to meet it.</p>
+            <p className="mb-6">IntelliDraw is just one step in that direction.
+              But it points to something bigger.
+              A world where your ability to think clearly directly translates into your ability to build, create, and execute.
+              A world where the gap between intention and outcome gets smaller.
+              A world where balance is restored, not by slowing AI down, but by bringing humans up to meet it.</p>
           </div>
 
           <div className="mt-12 text-left">
