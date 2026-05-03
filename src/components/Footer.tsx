@@ -56,15 +56,15 @@ export default function Footer() {
           </p>
           
           <div className="flex items-center gap-6">
-            <a href="#" className="text-slate-400 hover:text-slate-900 transition-colors">
+            <a href="https://x.com/erinski_easy" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-900 transition-colors">
               <Twitter className="w-4 h-4" />
               <span className="sr-only">Twitter</span>
             </a>
-            <a href="#" className="text-slate-400 hover:text-slate-900 transition-colors">
+            <a href="https://chat.whatsapp.com/Jr1BYruwnVbKxv8iwJ6aQo" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-900 transition-colors">
               <MessageCircle className="w-4 h-4" />
-              <span className="sr-only">Discord</span>
+              <span className="sr-only">WhatsApp</span>
             </a>
-            <a href="#" className="text-slate-400 hover:text-slate-900 transition-colors">
+            <a href="https://www.linkedin.com/in/erinskieasy/" target="_blank" rel="noopener noreferrer" className="text-slate-400 hover:text-slate-900 transition-colors">
               <Linkedin className="w-4 h-4" />
               <span className="sr-only">LinkedIn</span>
             </a>
