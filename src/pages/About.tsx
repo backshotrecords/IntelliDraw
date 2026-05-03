@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
-import { PenTool, ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import heroImage from '../assets/hero.png';
+import GlassAudioPlayer from '../components/GlassAudioPlayer';
 
 export default function About() {
   const location = useLocation();
@@ -15,7 +16,7 @@ export default function About() {
       <div className="fixed top-6 left-0 w-full z-50 flex justify-center px-4 animate-fade-in-up">
         <nav className="flex items-center justify-between w-full max-w-4xl px-6 py-3 bg-white/70 backdrop-blur-lg border border-slate-200/60 rounded-full shadow-sm relative">
           <Link to="/" className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
-            <PenTool className="w-6 h-6 text-slate-900" />
+            <img src="/favicon.svg" alt="IntelliDraw" className="w-6 h-6" />
             <span className="font-bold tracking-tight text-lg">IntelliDraw</span>
           </Link>
           <Link to="/" className="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">
@@ -31,6 +32,11 @@ export default function About() {
         <h1 className="article-title text-4xl md:text-5xl font-bold text-[#111827] mb-10 leading-tight">
           IntelliDraw: Restoring Balance Between Human Intent and AI Ability
         </h1>
+
+        {/* Audio Player - Listen to the article */}
+        <div className="mb-10">
+          <GlassAudioPlayer src="/ollie intellidraw.mp3" />
+        </div>
 
         <div className="animate-fade-in-up">
 

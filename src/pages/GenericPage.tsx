@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { PenTool, ArrowLeft } from 'lucide-react';
+import { ArrowLeft } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 interface GenericPageProps {
@@ -18,7 +18,7 @@ export default function GenericPage({ title }: GenericPageProps) {
       <div className="fixed top-6 left-0 w-full z-50 flex justify-center px-4 animate-fade-in-up">
         <nav className="flex items-center justify-between w-full max-w-4xl px-6 py-3 bg-white/70 backdrop-blur-lg border border-slate-200/60 rounded-full shadow-sm relative">
           <Link to="/" className="flex items-center gap-2 cursor-pointer hover:opacity-80 transition-opacity">
-            <PenTool className="w-6 h-6 text-slate-900" />
+            <img src="/favicon.svg" alt="IntelliDraw" className="w-6 h-6" />
             <span className="font-bold tracking-tight text-lg">IntelliDraw</span>
           </Link>
           <Link to="/" className="flex items-center gap-2 text-sm font-medium text-slate-600 hover:text-slate-900 transition-colors">

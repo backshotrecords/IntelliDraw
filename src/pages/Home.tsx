@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Hexagon, ChevronRight, Twitter, Linkedin, MessageCircle, PenTool, Network, Star, Share2, User, Menu, X } from 'lucide-react';
+import { ArrowRight, Hexagon, ChevronRight, Twitter, Linkedin, MessageCircle, Network, Star, Share2, User, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import InteractiveCanvas from '../components/InteractiveCanvas';
 import SlideToStart from '../components/SlideToStart';
@@ -159,7 +159,7 @@ export default function Home() {
             className="flex items-center gap-2 pl-2 md:pl-2 cursor-pointer"
             onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
           >
-            <PenTool className="w-6 h-6 text-slate-900" />
+            <img src="/favicon.svg" alt="IntelliDraw" className="w-6 h-6" />
             <span className="font-bold tracking-tight text-lg hidden sm:block">IntelliDraw</span>
           </div>
 
@@ -599,7 +599,7 @@ export default function Home() {
             {/* Footer Logo & Desc */}
             <div className="md:col-span-1">
               <div className="flex items-center gap-2 mb-6">
-                <PenTool className="w-7 h-7 text-slate-900" />
+                <img src="/favicon.svg" alt="IntelliDraw" className="w-7 h-7" />
                 <span className="font-bold tracking-tight text-xl">IntelliDraw</span>
               </div>
               <p className="text-slate-500 text-sm leading-relaxed pr-4">
