@@ -3,6 +3,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import heroImage from '../assets/hero.png';
 import GlassAudioPlayer from '../components/GlassAudioPlayer';
+import Footer from '../components/Footer';
 
 export default function About() {
   const location = useLocation();
@@ -125,12 +126,7 @@ export default function About() {
         </div>
       </main>
 
-      {/* Basic Footer for subpages */}
-      <footer className="bg-white border-t border-slate-200 py-8 text-center text-slate-400 text-sm">
-        <div className="max-w-7xl mx-auto px-6">
-          © 2026 IntelliDraw. All rights reserved.
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
+import Footer from '../components/Footer';
 
 interface GenericPageProps {
   title: string;
@@ -47,12 +48,7 @@ export default function GenericPage({ title }: GenericPageProps) {
         </div>
       </main>
 
-      {/* Basic Footer for subpages */}
-      <footer className="bg-white border-t border-slate-200 py-8 text-center text-slate-400 text-sm">
-        <div className="max-w-7xl mx-auto px-6">
-          © 2026 IntelliDraw. All rights reserved.
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }
