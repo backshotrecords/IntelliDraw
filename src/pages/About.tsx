@@ -4,6 +4,7 @@ import { Link, useLocation } from 'react-router-dom';
 import heroImage from '../assets/hero.png';
 import GlassAudioPlayer from '../components/GlassAudioPlayer';
 import Footer from '../components/Footer';
+import { APP_URL } from '../lib/links';
 
 export default function About() {
   const location = useLocation();
@@ -119,9 +120,9 @@ export default function About() {
           </div>
 
           <div className="mt-12 text-left">
-            <Link to="/" className="inline-flex items-center justify-center bg-slate-900 hover:bg-slate-800 text-white font-medium px-8 py-4 rounded-full transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
+            <a href={APP_URL} className="inline-flex items-center justify-center bg-slate-900 hover:bg-slate-800 text-white font-medium px-8 py-4 rounded-full transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
               Go to the App
-            </Link>
+            </a>
           </div>
         </div>
       </main>

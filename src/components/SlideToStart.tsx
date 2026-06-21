@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion } from 'motion/react';
 import { ArrowRight } from 'lucide-react';
+import { APP_URL } from '../lib/links';
 
 interface SlideToStartProps {
   onUnlock?: () => void;
@@ -31,7 +32,7 @@ export default function SlideToStart({ onUnlock, onReset }: SlideToStartProps) {
       
       // Simulate action and wait slightly longer so animation can finish playing
       setTimeout(() => {
-        window.location.href = "https://repo-intellidraw.vercel.app/";
+        window.location.href = APP_URL;
         // Reset state so it's reset if the user hits back button on mobile
         setTimeout(() => {
           setIsUnlocked(false);

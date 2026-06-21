@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 import Footer from '../components/Footer';
+import { APP_URL } from '../lib/links';
 
 interface GenericPageProps {
   title: string;
@@ -40,9 +41,9 @@ export default function GenericPage({ title }: GenericPageProps) {
               Information regarding our {title.toLowerCase()} policies and more will be fully available in this section. In the meantime, start diagramming with our app!
             </p>
             <div className="mt-8">
-              <Link to="/" className="inline-flex items-center justify-center bg-slate-900 hover:bg-slate-800 text-white font-medium px-6 py-3 rounded-full transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
+              <a href={APP_URL} className="inline-flex items-center justify-center bg-slate-900 hover:bg-slate-800 text-white font-medium px-6 py-3 rounded-full transition-all duration-300 hover:shadow-md hover:-translate-y-0.5">
                 Go to the App
-              </Link>
+              </a>
             </div>
           </div>
         </div>
