@@ -9,10 +9,10 @@ interface MobileMenuProps {
 
 export default function MobileMenu({ isOpen, setIsOpen }: MobileMenuProps) {
   const menuItems = [
-    { id: 'features', label: 'Features', icon: Network, node: '01' },
-    { id: 'use-cases', label: 'Use Cases', icon: Hexagon, node: '02' },
-    { id: 'docs', label: 'Docs', icon: FileText, node: '03' },
-    { id: 'pricing', label: 'Pricing', icon: DollarSign, node: '04' },
+    { id: 'features', label: 'Features', icon: Network, node: '01', href: '#features' },
+    { id: 'use-cases', label: 'Use Cases', icon: Hexagon, node: '02', href: '#use-cases' },
+    { id: 'docs', label: 'Docs', icon: FileText, node: '03', href: '/about' },
+    { id: 'pricing', label: 'Pricing', icon: DollarSign, node: '04', href: '#pricing' },
   ];
 
   return (
@@ -41,7 +41,7 @@ export default function MobileMenu({ isOpen, setIsOpen }: MobileMenuProps) {
                 return (
                   <motion.a
                     key={item.id}
-                    href={`#${item.id}`}
+                    href={item.href}
                     onClick={() => setIsOpen(false)}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}

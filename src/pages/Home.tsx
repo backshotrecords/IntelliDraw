@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { ArrowRight, Hexagon, ChevronRight, Network, Star, Share2, User, Menu, X } from 'lucide-react';
+import { ArrowRight, Hexagon, ChevronRight, Network, Share2, Menu, X } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import InteractiveCanvas from '../components/InteractiveCanvas';
 import SlideToStart from '../components/SlideToStart';
@@ -68,9 +68,27 @@ export default function Home() {
         }
       }
 
+      @keyframes fadeInDown {
+        from {
+          opacity: 0;
+          transform: translateY(-20px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
       .animate-fade-in-up {
-        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
         opacity: 0;
+      }
+
+      .animate-fade-in-up.in-view {
+        animation: fadeInUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .animate-fade-in-up.in-view-down {
+        animation: fadeInDown 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
       }
       
       .delay-100 { animation-delay: 100ms; }
@@ -117,6 +135,42 @@ export default function Home() {
     `;
     document.head.appendChild(style);
     return () => document.head.removeChild(style);
+  }, []);
+
+  // Trigger entry animations when elements scroll into view, reset them once
+  // fully off-screen, and re-fire directionally: fade up when entering from
+  // the bottom (scrolling down), fade down when entering from the top.
+  useEffect(() => {
+    const els = Array.from(document.querySelectorAll('.animate-fade-in-up'));
+    let lastY = window.scrollY;
+
+    const update = () => {
+      const goingUp = window.scrollY < lastY;
+      lastY = window.scrollY;
+      const vh = window.innerHeight;
+
+      els.forEach((el) => {
+        const rect = el.getBoundingClientRect();
+        const entered = rect.top < vh - 40 && rect.bottom > 40;
+        const gone = rect.bottom < 0 || rect.top > vh;
+        const active = el.classList.contains('in-view') || el.classList.contains('in-view-down');
+
+        if (entered && !active) {
+          el.classList.add(goingUp ? 'in-view-down' : 'in-view');
+        } else if (gone && active) {
+          el.classList.remove('in-view', 'in-view-down');
+        }
+      });
+    };
+
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update);
+    update();
+
+    return () => {
+      window.removeEventListener('scroll', update);
+      window.removeEventListener('resize', update);
+    };
   }, []);
 
   return (
@@ -169,7 +223,7 @@ export default function Home() {
           <div className="hidden md:flex items-center gap-8 text-sm font-medium text-slate-600">
             <a href="#features" className="hover:text-slate-900 transition-colors">Features</a>
             <a href="#use-cases" className="hover:text-slate-900 transition-colors">Use Cases</a>
-            <a href="#docs" className="hover:text-slate-900 transition-colors">Docs</a>
+            <Link to="/about" className="hover:text-slate-900 transition-colors">Docs</Link>
             <a href="#pricing" className="hover:text-slate-900 transition-colors">Pricing</a>
           </div>
 
@@ -398,8 +452,8 @@ export default function Home() {
             {/* Cards Grid Container */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 w-full relative pt-0 md:pt-8">
 
-              {/* Desktop Horizontal Branch */}
-              <div className="hidden md:block absolute top-0 left-[16.666%] right-[16.666%] h-[2px] bg-slate-300">
+              {/* Desktop Horizontal Branch — ends anchored to the outer card centers: (100% - two 2rem gaps) / 6 */}
+              <div className="hidden md:block absolute top-0 h-[2px] bg-slate-300" style={{ left: 'calc((100% - 4rem) / 6)', right: 'calc((100% - 4rem) / 6)' }}>
                 {/* Left Stem */}
                 <div className="absolute left-0 top-0 w-[2px] h-8 bg-slate-300"></div>
                 {/* Middle Stem */}
@@ -456,7 +510,7 @@ export default function Home() {
         SKILL MARKETPLACE & TESTIMONIAL SECTION
         ========================================
       */}
-      <section id="docs" className="py-24 px-6 border-b border-slate-200">
+      <section id="skills" className="py-24 px-6 border-b border-slate-200">
         <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-center gap-16">
 
           {/* Left: Copy & Testimonial */}
@@ -469,24 +523,21 @@ export default function Home() {
               Create reusable Skill Notes — structured instructions that shape how the AI generates your diagrams. Publish skills to the Marketplace, install community standards, and enforce consistency across your entire team.
             </p>
 
-            {/* Light-theme adaptation of the dark testimonial card */}
-            <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm relative">
-              <div className="flex gap-1 mb-6">
-                {[1, 2, 3, 4, 5].map((star) => (
-                  <Star key={star} className="w-5 h-5 text-amber-400 fill-amber-400" />
-                ))}
+            {/* Example Skill Note — shows what a skill actually looks like */}
+            <div className="bg-white rounded-2xl border border-slate-200 shadow-sm relative overflow-hidden">
+              <div className="flex items-center justify-between px-6 py-4 border-b border-slate-100 bg-slate-50/60">
+                <div className="flex items-center gap-3">
+                  <div className="w-2 h-2 rounded-full bg-emerald-400"></div>
+                  <span className="font-mono text-xs font-semibold tracking-widest text-slate-500 uppercase">skill_note.md</span>
+                </div>
+                <span className="font-mono text-[10px] font-semibold tracking-widest text-slate-400 uppercase">Installed</span>
               </div>
-              <p className="text-xl md:text-2xl font-medium text-slate-800 leading-snug mb-8">
-                "It’s like having a Senior Architect who knows exactly how I like to work. The time saved is just incredible."
-              </p>
-              <div className="flex items-center gap-4 pt-6 border-t border-slate-100">
-                <div className="w-12 h-12 rounded-full bg-slate-100 flex items-center justify-center border border-slate-200">
-                  <User className="w-6 h-6 text-slate-500" />
-                </div>
-                <div>
-                  <h4 className="font-bold text-slate-900">Alex Rivera</h4>
-                  <p className="text-sm text-slate-500">Lead Engineer @ CloudScale</p>
-                </div>
+              <div className="p-6 font-mono text-sm leading-loose text-slate-600">
+                <p className="text-slate-400"># AWS Architecture Style</p>
+                <p><span className="text-slate-400">-</span> Use cylinders for databases</p>
+                <p><span className="text-slate-400">-</span> Group services in subgraphs by VPC</p>
+                <p><span className="text-slate-400">-</span> Label every queue with its protocol</p>
+                <p><span className="text-slate-400">-</span> Dashed lines for async calls only</p>
               </div>
             </div>
           </div>
@@ -543,19 +594,19 @@ export default function Home() {
             <p className="text-lg text-slate-500 max-w-2xl mx-auto">Start mapping out your ideas for free, and upgrade when you need to collaborate.</p>
           </div>
 
-          <div className="grid md:grid-cols-2 max-w-4xl mx-auto gap-8 animate-fade-in-up delay-200">
+          <div className="grid md:grid-cols-3 max-w-6xl mx-auto gap-8 animate-fade-in-up delay-200">
             {/* Free Tier */}
-            <div className="bg-white rounded-[2rem] p-8 border border-slate-200 shadow-sm">
-              <h3 className="text-xl font-bold text-slate-900 mb-2">Thinker</h3>
-              <p className="text-slate-500 mb-6">Perfect for solo developers and planners.</p>
+            <div className="bg-white rounded-[2rem] p-8 border border-slate-200 shadow-sm flex flex-col">
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Free</h3>
+              <p className="text-slate-500 mb-6">Everything you need to start mapping ideas.</p>
               <div className="mb-8">
                 <span className="text-5xl font-bold text-slate-900">$0</span>
                 <span className="text-slate-500">/mo</span>
               </div>
-              <ul className="space-y-4 mb-8 text-slate-600">
-                <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-700" /> Unlimited canvases</li>
-                <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-700" /> 150 AI generations per month</li>
-                <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-300" /> <span className="text-slate-400 decoration-slate-300">Team collaboration</span></li>
+              <ul className="space-y-4 mb-8 text-slate-600 flex-1">
+                <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-700 shrink-0" /> 99 canvases</li>
+                <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-700 shrink-0" /> 150 AI generations per month</li>
+                <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-700 shrink-0" /> Team collaboration</li>
               </ul>
               <button
                 onClick={() => window.location.href = APP_URL}
@@ -565,25 +616,46 @@ export default function Home() {
             </div>
 
             {/* Pro Tier */}
-            <div className="bg-slate-900 rounded-[2rem] p-8 shadow-xl text-white relative overflow-hidden">
+            <div className="bg-slate-900 rounded-[2rem] p-8 shadow-xl text-white relative overflow-hidden flex flex-col">
               <div className="absolute top-0 right-0 p-4">
                 <div className="bg-slate-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest">Popular</div>
               </div>
-              <h3 className="text-xl font-bold mb-2">Committee</h3>
-              <p className="text-slate-400 mb-6">For teams that need to stay aligned.</p>
+              <h3 className="text-xl font-bold mb-2">Pro</h3>
+              <p className="text-slate-400 mb-6">Remove every limit on your thinking.</p>
               <div className="mb-8">
                 <span className="text-5xl font-bold">$12</span>
                 <span className="text-slate-400">/user/mo</span>
               </div>
-              <ul className="space-y-4 mb-8 text-slate-300">
-                <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-300" /> Unlimited AI generations</li>
-                <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-300" /> Unlimited canvases</li>
-                <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-300" /> Custom private Skills</li>
+              <ul className="space-y-4 mb-8 text-slate-300 flex-1">
+                <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-300 shrink-0" /> Everything in Free</li>
+                <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-300 shrink-0" /> Unlimited AI generations</li>
+                <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-300 shrink-0" /> Unlimited canvases</li>
+                <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-300 shrink-0" /> Custom private Skills</li>
               </ul>
               <button
                 onClick={() => window.location.href = APP_URL}
                 className="w-full bg-slate-100 hover:bg-white text-slate-900 font-bold py-3.5 rounded-full transition-all">
                 Start 14-Day Free Trial
+              </button>
+            </div>
+
+            {/* Max Tier */}
+            <div className="bg-white rounded-[2rem] p-8 border-2 border-slate-900 shadow-sm relative overflow-hidden flex flex-col">
+              <h3 className="text-xl font-bold text-slate-900 mb-2">Max</h3>
+              <p className="text-slate-500 mb-6">Diagram live, while the meeting is still happening.</p>
+              <div className="mb-8">
+                <span className="text-5xl font-bold text-slate-900">$29</span>
+                <span className="text-slate-500">/user/mo</span>
+              </div>
+              <ul className="space-y-4 mb-8 text-slate-600 flex-1">
+                <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-700 shrink-0" /> Everything in Pro</li>
+                <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-700 shrink-0" /> Meeting Mode</li>
+                <li className="flex items-center gap-3"><Hexagon className="w-4 h-4 text-slate-700 shrink-0" /> Live flowchart generation</li>
+              </ul>
+              <button
+                onClick={() => window.location.href = APP_URL}
+                className="w-full bg-slate-900 hover:bg-slate-800 text-white font-bold py-3.5 rounded-full transition-all">
+                Go Max
               </button>
             </div>
           </div>
